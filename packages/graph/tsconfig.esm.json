@@ -1,0 +1,26 @@
+{
+    "extends": "../tsconfig.esm.json",
+    "compilerOptions": {
+        "strictNullChecks": false
+    },
+    "types": [
+        "adal"
+    ],
+    "include": [
+        "./**/*.ts",
+        "../common/**/*.ts",
+        "../logging/**/*.ts",
+        "../odata/**/*.ts"
+    ],
+    "references": [
+        {
+            "path": "../common/tsconfig.esm.json"
+        },
+        {
+            "path": "../logging/tsconfig.esm.json"
+        },
+        {
+            "path": "../odata/tsconfig.esm.json"
+        }
+    ]
+}

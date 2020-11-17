@@ -1,131 +1,191 @@
 site_name: PnP/PnPjs
-docs_dir: 'packages'
+
+docs_dir: 'docs'
+
 nav:
   - Home: 'index.md'
-  - 'Getting Started': 'documentation/getting-started.md'
-  - 'Transition Guide': 'documentation/transition-guide.md'
+  - 'Getting Started': 'getting-started.md'
+  - 'Transition Guide': 'transition-guide.md'
   - General:
-    - 'Getting Started': 'documentation/getting-started.md'
-    - 'Getting Started Contributing': 'documentation/getting-started-dev.md'
-    - 'Gulp Commands': 'documentation/gulp-commands.md'
-    - Debugging: 'documentation/debugging.md'
-    - 'Building Docs': 'documentation/documentation.md'
-    - Deployment: 'documentation/deployment.md'
-    - 'Install Beta Versions': 'documentation/beta-versions.md'
-    - Polyfills: 'documentation/polyfill.md'
-    - 'Package Structure': 'documentation/package-structure.md'
-    - 'SPFx On-Premises 2016': 'documentation/SPFx-On-Premesis-2016.md'
-    - 'Transition Guide': 'documentation/transition-guide.md'
+    - 'Getting Started': 'getting-started.md'
+    - 'Transition Guide': 'transition-guide.md'
+    - 'Npm Scripts': 'npm-scripts.md'
+    - 'SPFx On-Premises': 'SPFx-on-premises.md'
+    - 'Working in Nodejs': 'nodejs-support.md'
+  - 'Library Concepts':
+    - 'Configuration': 'concepts/configuration.md'
+    - 'Selective Imports': 'concepts/selective-imports.md'
+    - 'Custom Bundle': 'concepts/custom-bundle.md'
+    - 'IE11 Mode': 'concepts/ie11-mode.md'
+    - 'Invokables': 'concepts/invokable.md'
+    - 'Polyfills': 'concepts/polyfill.md'
+    - 'Settings': 'concepts/settings.md'
+    - 'Error Handling': 'concepts/error-handling.md'
+    - 'Authentication':
+      - 'Getting Started': 'authentication/index.md'
+      - 'SPFx Auth': 'authentication/client-spfx.md'
+      - 'MSAL Client': 'authentication/msaljsclient.md'
+      - 'ADAL Client': 'authentication/adaljsclient.md'
+      - 'SPA Auth': 'authentication/client-spa.md'
+      - 'NodeJS Auth': 'authentication/server-nodejs.md'
+      - 'SP App Reg': 'authentication/sp-app-registration.md'
   - Packages:
-    - Packages: 'documentation/packages.md'
+    - Packages: 'packages.md'
     - common:
-      - common: 'common/docs/index.md'
-      - adalclient: 'common/docs/adalclient.md'
-      - blobutil: 'common/docs/blobutil.md'
-      - collections: 'common/docs/collections.md'
-      - 'Custom HttpClientImpl': 'common/docs/custom-httpclientimpl.md'
-      - libconfig: 'common/docs/libconfig.md'
-      - netutil: 'common/docs/netutil.md'
-      - storage: 'common/docs/storage.md'
-      - util: 'common/docs/util.md'
+      - common: 'common/index.md'
+      - collections: 'common/collections.md'
+      - 'Custom HttpClientImpl': 'common/custom-httpclientimpl.md'
+      - libconfig: 'common/libconfig.md'
+      - netutil: 'common/netutil.md'
+      - storage: 'common/storage.md'
+      - util: 'common/util.md'
     - config-store:
-      - config-store: 'config-store/docs/index.md'
-      - configuration: 'config-store/docs/configuration.md'
-      - providers: 'config-store/docs/providers.md'
+      - config-store: 'config-store/index.md'
+      - configuration: 'config-store/configuration.md'
+      - providers: 'config-store/providers.md'
     - graph: 
-      - graph: 'graph/docs/index.md'
-      - contacts: 'graph/docs/contacts.md'
-      - 'directory objects': 'graph/docs/directoryobjects.md'
-      - invitations: 'graph/docs/invitations.md'
-      - onedrive: 'graph/docs/onedrive.md'
-      - planner: 'graph/docs/planner.md'
-      - subscriptions: 'graph/docs/subscriptions.md'
-      - teams: 'graph/docs/teams.md'
-    - logging: 'logging/docs/index.md'
+      - graph: 'graph/index.md'
+      - groups: 'graph/groups.md'
+      - insights: 'graph/insights.md'
+      - contacts: 'graph/contacts.md'
+      - calendars: 'graph/calendars.md'
+      - 'directory objects': 'graph/directoryobjects.md'
+      - invitations: 'graph/invitations.md'
+      - onedrive: 'graph/onedrive.md'
+      - photos: 'graph/photos.md'
+      - planner: 'graph/planner.md'
+      - subscriptions: 'graph/subscriptions.md'
+      - teams: 'graph/teams.md'
+      - users: 'graph/users.md'
+    - logging: 'logging/index.md'
     - nodejs:
-      - nodejs: 'nodejs/docs/index.md'
-      - AdalFetchClient: 'nodejs/docs/adal-fetch-client.md'
-      - SPFetchClient: 'nodejs/docs/sp-fetch-client.md'
-      - BearerTokenFetchClient: 'nodejs/docs/bearer-token-fetch-client.md'
-      - ProviderHostedRequestContext: 'nodejs/docs/provider-hosted-app.md'
+      - nodejs: 'nodejs/index.md'
+      - SPFetchClient: 'nodejs/sp-fetch-client.md'     
+      - AdalFetchClient: 'nodejs/adal-fetch-client.md'
+      - BearerTokenFetchClient: 'nodejs/bearer-token-fetch-client.md'       
+      - ProviderHostedRequestContext: 'nodejs/provider-hosted-app.md'
+      - 'sp Extensions': 'nodejs\sp-extensions.md'
+      - proxy: 'nodejs\proxy.md'
     - odata:
-      - odata: 'odata/docs/index.md'
-      - caching: 'odata/docs/caching.md'
-      - core: 'odata/docs/core.md'
-      - 'OData Batching': 'odata/docs/odata-batch.md'
-      - Parsers: 'odata/docs/parsers.md'
-      - Pipeline: 'odata/docs/pipeline.md'
-      - Queryable: 'odata/docs/queryable.md'
-    - pnpjs: 'pnpjs/docs/index.md'
+      - odata: 'odata/index.md'
+      - caching: 'odata/caching.md'
+      - core: 'odata/core.md'
+      - 'OData Batching': 'odata/odata-batch.md'
+      - 'Extending an OData library': 'odata/extensions.md'
+      - 'Debugging Proxy Objects': 'odata/debug.md'
+      - Parsers: 'odata/parsers.md'
+      - Pipeline: 'odata/pipeline.md'
+      - Queryable: 'odata/queryable.md'
+    - pnpjs:
+      - pnpjs: 'pnpjs/index.md'
     - sp:
-      - sp: 'sp/docs/index.md'
-      - 'Alias Parameters': 'sp/docs/alias-parameters.md'
-      - 'ALM api': 'sp/docs/alm.md'
-      - Attachments: 'sp/docs/attachments.md'
-      - 'Client-side Pages': 'sp/docs/client-side-pages.md'
-      - 'Content Types': 'sp/docs/content-types.md'
-      - 'Entity Merging': 'sp/docs/entity-merging.md'
-      - Features: 'sp/docs/features.md'
-      - Fields: 'sp/docs/fields.md'
-      - Files: 'sp/docs/files.md'
-      - 'List Items': 'sp/docs/items.md'
-      - 'Navigation Service': 'sp/docs/navigation-service.md'
-      - Permissions: 'sp/docs/permissions.md'
-      - Profiles: 'sp/docs/profiles.md'
-      - 'Related Items': 'sp/docs/related-items.md'
-      - Search: 'sp/docs/search.md'
-      - Sharing: 'sp/docs/sharing.md'
-      - Sites: 'sp/docs/sites.md'
-      - Site Designs: 'sp/docs/sitedesigns.md'
-      - Social: 'sp/docs/social.md'
-      - 'SP.Utilities.Utility': 'sp/docs/sp-utilities-utility.md'
-      - 'Tenant Properties': 'sp/docs/tenant-properties.md'
-      - Views: 'sp/docs/views.md'
-      - Webs: 'sp/docs/webs.md'
-      - 'Comments and Likes': 'sp/docs/comments-likes.md'
+      - sp: 'sp/index.md'
+      - 'Alias Parameters': 'sp/alias-parameters.md'
+      - 'ALM api': 'sp/alm.md'
+      - Attachments: 'sp/attachments.md'
+      - 'Client-side Pages': 'sp/clientside-pages.md'
+      - 'Column Defaults': 'sp/column-defaults.md'
+      - 'Comments and Likes': 'sp/comments-likes.md'
+      - 'Content Types': 'sp/content-types.md'
+      - 'Entity Merging': 'sp/entity-merging.md'
+      - Features: 'sp/features.md'
+      - Fields: 'sp/fields.md'
+      - Files: 'sp/files.md'
+      - Folders: 'sp/folders.md'
+      - Forms: 'sp/forms.md'
+      - Hubsites: 'sp/hubsites.md'
+      - 'List Items': 'sp/items.md'
+      - Lists: 'sp/lists.md'      
+      - 'Navigation': 'sp/navigation.md'
+      - Permissions: 'sp/permissions.md'
+      - Profiles: 'sp/profiles.md'
+      - 'Regional Settings': 'sp/regional-settings.md'
+      - 'Related Items': 'sp/related-items.md'
+      - Search: 'sp/search.md'
+      - Security: 'sp/security.md'
+      - Sharing: 'sp/sharing.md'
+      - 'Site Designs': 'sp/site-designs.md'
+      - 'Site Groups': 'sp/site-groups.md'
+      - 'Site Scripts': 'sp/site-scripts.md'
+      - 'Site Users': 'sp/site-users.md'
+      - Sites: 'sp/sites.md'
+      - Social: 'sp/social.md'
+      - 'SP.Utilities.Utility': 'sp/sp-utilities-utility.md'
+      - Subscriptions: 'sp/subscriptions.md'
+      - Taxonomy: 'sp/taxonomy.md'
+      - 'Tenant Properties': 'sp/tenant-properties.md'
+      - 'User custom actions': 'sp/user-custom-actions.md'      
+      - Views: 'sp/views.md'
+      - Webs: 'sp/webs.md'
+      - 'Custom Request Client': 'sp/custom-irequestclient.md'
     - sp-addinhelpers:
-      - sp-addinhelpers: 'sp-addinhelpers/docs/index.md'
-      - SPRequestExecutorClient:  'sp-addinhelpers/docs/sp-request-executor-client.md'
-      - SPRestAddIn: 'sp-addinhelpers/docs/sp-rest-addin.md'
-    - sp-clientsvc: 'sp-clientsvc/docs/index.md'
-    - sp-taxonomy:
-      - sp-taxonomy: 'sp-taxonomy/docs/index.md'
-      - 'Term Stores': 'sp-taxonomy/docs/term-stores.md'
-      - 'Term Groups': 'sp-taxonomy/docs/term-groups.md'
-      - 'Term Sets': 'sp-taxonomy/docs/term-sets.md'
-      - Terms: 'sp-taxonomy/docs/terms.md'
-      - Labels: 'sp-taxonomy/docs/labels.md'
-      - Utilities: 'sp-taxonomy/docs/utilities.md'
-  - 'V2 Beta Docs':
-    - Beta Docs: 'documentation/v2-beta'
+      - sp-addinhelpers: 'sp-addinhelpers/index.md'
+      - SPRequestExecutorClient:  'sp-addinhelpers/sp-request-executor-client.md'
+      - SPRestAddIn: 'sp-addinhelpers/sp-rest-addin.md'
+  - Contributing:
+    - 'Contributing': 'contributing/index.md'
+    - 'Setup Dev Maching': 'contributing/setup-dev-machine.md'
+    - 'Local Debug Configuration': 'contributing/local-debug-configuration.md'
+    - 'Debugging': 'contributing/debugging.md'
+    - 'Extending the library': 'contributing/extending-the-library.md'
+    - 'Writing Tests': 'contributing/debug-tests.md'
+    - 'Update Documentation': 'contributing/documentation.md'
+    - 'Submit a Pull Request': 'contributing/pull-requests.md'
+  - Version 1 Docs:
+    - Home: 'v1/index.html'
+
 theme:
   name: 'material'
-  custom_dir: 'packages/documentation/theme'
+  custom_dir: 'docs/_theme'
   palette:
     primary: 'blue'
-  logo: 'documentation/img/Logo.png'
+  logo: 'img/Logo.png'
   feature:
     tabs: true
+
 extra_css:
-  - 'documentation/css/extra.css'
+  - 'css/extra.css'
+
+# extra_javascript:
+#     - https://unpkg.com/mermaid@8.5.2/dist/mermaid.min.js
+
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: false
+  # - pymdownx.superfences
+      # custom_fences:
+      #   - name: mermaid
+      #     class: mermaid
+      #     format: !!python/name:pymdownx.superfences.fence_div_format
   - toc:
       permalink: true
+
 plugins:
   - search
   - markdownextradata
+  # - mermaid2:
+  #     arguments:
+  #       securityLevel: 'loose'
+  #       theme: 'default'
+  - redirects:
+      redirect_maps:
+          'adaljsclient/index.md': 'authentication/index.md'
+          'adaljsclient/adalclient.md': 'authentication/adaljsclient.md'
+          'getting-started-dev.md': 'contributing/index.md'
+          'debugging.md': 'contributing/debugging.md'
+          'debug-tests.md': 'contributing/debug-tests.md'
+          'documentation.md': 'contributing/documentation.md'
+
 extra:
-  version: '1.3.7'
   social:
-    - type: 'twitter'
-      link: 'https://twitter.com/officedevpnp'
-    - type: 'youtube'
+    - icon: 'fontawesome/brands/twitter'
+      link: 'https://twitter.com/m365pnpjs'
+    - icon: 'fontawesome/brands/youtube'
       link: 'http://aka.ms/sppnp-videos'
-    - type: 'link'
+    - icon: 'fontawesome/brands/microsoft'
       link: 'https://aka.ms/sppnp'
+
 repo_url: http://github.com/pnp/pnpjs
-edit_uri: tree/dev/packages
+
+edit_uri: tree/version-2/docs
+
 site_url: https://pnp.github.io/pnpjs/

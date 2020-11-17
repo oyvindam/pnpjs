@@ -1,6 +1,7 @@
 declare var require: (s: string) => any;
-import { BuildSchema } from "./schema";
+import { BuildSchema } from "../../config";
 const path = require("path");
+// they broke the types in replace-in-file so we need to import it this way
 const replace = require("replace-in-file");
 
 interface TSConfig {
@@ -14,17 +15,16 @@ interface TSConfig {
  * 
  * @param ctx The build context
  */
-export function replaceDebug(version: string, config: BuildSchema) {
+export async function replaceDebug(version: string, config: BuildSchema): Promise<void> {
 
     const optionsVersion = {
-        allowEmptyPaths: true,
         files: [],
         from: /\$\$Version\$\$/ig,
         to: version,
     };
 
     const optionsRequireTemplate = {
-        from: /require\(['|"]@pnp\/[\w-]*?['|"]/ig,
+        from: /require\(['|"]@pnp\/[\w-\/]*?['|"]/ig,
     };
 
     const requireOptionsCollection = [];
@@ -36,21 +36,24 @@ export function replaceDebug(version: string, config: BuildSchema) {
         const sourceRoot = path.resolve(path.dirname(config.buildTargets[i]));
         const outDir = buildConfig.compilerOptions.outDir;
 
-        optionsVersion.files.push(path.resolve(sourceRoot, outDir, "packages/sp/src/net/sphttpclient.js"));
-        optionsVersion.files.push(path.resolve(sourceRoot, outDir, "packages/sp/src/batch.js"));
-        optionsVersion.files.push(path.resolve(sourceRoot, outDir, "packages/graph/src/net/graphhttpclient.js"));
+        optionsVersion.files.push(path.resolve(sourceRoot, outDir, "sp/sphttpclient.js"));
+        optionsVersion.files.push(path.resolve(sourceRoot, outDir, "graph/graphhttpclient.js"));
+        optionsVersion.files.push(path.resolve(sourceRoot, outDir, "sp/batch.js"));
 
         requireOptionsCollection.push(Object.assign({}, optionsRequireTemplate, {
             files: [
                 path.resolve(sourceRoot, outDir, "**/*.js"),
                 path.resolve(sourceRoot, outDir, "**/*.d.ts"),
             ],
-            to: (match) => {
-                const m = /require\(['|"]@pnp\/([\w-]*?)['|"]/ig.exec(match);
+            to: (match: string) => {
+                const m = /require\(['|"]@pnp\/([\w-\/]*?)['|"]/ig.exec(match);
                 return `require("${path.resolve(sourceRoot, outDir, `packages/${m[1]}`).replace(/\\/g, "/")}"`;
             },
         }));
     }
 
-    return replace(optionsVersion).then(_ => Promise.all([...requireOptionsCollection.map(c => replace(c))]).catch(e => console.error));
+    await Promise.all([
+        replace(optionsVersion),
+        ...requireOptionsCollection.map(c => replace(c)),
+    ]).catch(e => console.error);
 }

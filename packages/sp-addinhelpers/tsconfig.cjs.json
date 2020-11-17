@@ -1,0 +1,23 @@
+{
+    "extends": "../tsconfig.cjs.json",
+    "compilerOptions": {
+        "types": [
+            "sharepoint"
+        ]
+    },
+    "include": [
+        "./**/*.ts",
+        "../logging/**/*.ts",
+        "../common/**/*.ts",
+        "../odata/**/*.ts",
+        "../sp/**/*.ts"
+    ],
+    "references": [
+        {
+            "path": "../common/tsconfig.cjs.json"
+        },
+        {
+            "path": "../sp/tsconfig.cjs.json"
+        }
+    ]
+}

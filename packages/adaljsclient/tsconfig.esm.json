@@ -1,0 +1,15 @@
+{
+    "extends": "../tsconfig.esm.json",
+    "types": [
+        "adal"
+    ],
+    "include": [
+        "./**/*.ts",
+        "../common/**/*.ts"
+    ],
+    "references": [
+        {
+            "path": "../common/tsconfig.esm.json"
+        }
+    ]
+}

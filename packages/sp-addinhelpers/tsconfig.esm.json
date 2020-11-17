@@ -1,0 +1,23 @@
+{
+    "extends": "../tsconfig.esm.json",
+    "compilerOptions": {
+        "types": [
+            "sharepoint"
+        ]
+    },
+    "include": [
+        "./**/*.ts",
+        "../logging/**/*.ts",
+        "../common/**/*.ts",
+        "../odata/**/*.ts",
+        "../sp/**/*.ts"
+    ],
+    "references": [
+        {
+            "path": "../common/tsconfig.esm.json"
+        },
+        {
+            "path": "../sp/tsconfig.esm.json"
+        }
+    ]
+}

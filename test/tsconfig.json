@@ -1,11 +1,14 @@
 {
+    "extends": "../tsconfig.json",
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "es2015",
         "baseUrl": ".",
         "rootDir": "../",
         "outDir": "../build/testing",
         "declaration": false,
+        "declarationMap": false,
+        "composite": false,
+        "incremental": true,
         "types": [
             "chai",
             "chai-as-promised",
@@ -13,26 +16,14 @@
             "mocha",
             "sharepoint"
         ],
-        "lib": [
-            "es6",
-            "dom"
-        ],
+        "removeComments": true,
         "paths": {
             "@pnp/*": [
                 "../packages/*"
             ]
-        },
-        "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node",
-        "sourceMap": false,
-        "skipDefaultLibCheck": true,
-        "skipLibCheck": true,
-        "experimentalDecorators": true,
-        "removeComments": true,
-        "importHelpers": true
+        }
     },
     "include": [
-        "./main.ts",
-        "../packages/**/*.ts"
+        "./**/*.ts"
     ]
 }

@@ -2,13 +2,12 @@
   "linterOptions": {
     "exclude": [
       "/**/node_modules/**",
-      "/**/*.d.ts",
-      "/**/*.test.ts"
+      "/**/*.d.ts"
     ]
   },
   "rules": {
-    "no-consecutive-blank-lines": true,
-    "class-name": true,
+    "no-consecutive-blank-lines": false,
+    "class-name": false,
     "comment-format": [
       true,
       "check-space"

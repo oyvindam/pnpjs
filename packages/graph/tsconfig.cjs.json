@@ -1,0 +1,26 @@
+{
+    "extends": "../tsconfig.cjs.json",
+    "compilerOptions": {
+        "strictNullChecks": false
+    },
+    "types": [
+        "adal"
+    ],
+    "include": [
+        "./**/*.ts",
+        "../common/**/*.ts",
+        "../logging/**/*.ts",
+        "../odata/**/*.ts"
+    ],
+    "references": [
+        {
+            "path": "../common/tsconfig.cjs.json"
+        },
+        {
+            "path": "../logging/tsconfig.cjs.json"
+        },
+        {
+            "path": "../odata/tsconfig.cjs.json"
+        }
+    ]
+}

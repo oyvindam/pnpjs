@@ -1,10 +1,11 @@
 import { Logger, LogLevel } from "@pnp/logging";
-import { graph } from "@pnp/graph";
 import { AdalFetchClient } from "@pnp/nodejs";
+import { graph } from "@pnp/graph";
+import "@pnp/graph/groups";
 
 declare var process: { exit(code?: number): void };
 
-export function Example(settings: any) {
+export async function Example(settings: any) {
 
     graph.setup({
         graph: {
@@ -14,20 +15,14 @@ export function Example(settings: any) {
         },
     });
 
-    graph.groups.get().then(g => {
 
-        Logger.log({
-            data: g,
-            level: LogLevel.Info,
-            message: "List of Groups",
-        });
+    const g = await graph.groups();
 
-        process.exit(0);
-
-    }).catch(e => {
-
-        // logging results to the Logger
-        Logger.error(e);
-        process.exit(1);
+    Logger.log({
+        data: g,
+        level: LogLevel.Info,
+        message: "List of Groups",
     });
+
+    process.exit(0);
 }

@@ -1,11 +1,9 @@
 declare var require: (s: string) => any;
 const fs = require("fs"),
     path = require("path");
+import { sync as ensurePath } from "mkdirp";
 
-// import { src, dest } from "gulp";
-// const pump = require("pump");
-
-import { PackageSchema } from "./schema";
+import { PackageTargetMap } from "../../config";
 import getSubDirNames from "../../lib/getSubDirectoryNames";
 
 interface TSConfig {
@@ -20,32 +18,28 @@ interface TSConfig {
  * 
  * @param ctx The build context 
  */
-export function writePackageFiles(version: string, config: PackageSchema) {
+export function createWritePackageFiles(transform: (pkg: any) => any = (p) => Object.assign({}, p)) {
 
-    const promises: Promise<void>[] = [];
+    return (target: PackageTargetMap, version: string) => {
 
-    for (let i = 0; i < config.packageTargets.length; i++) {
-
-        const packageTarget = config.packageTargets[i];
+        const promises: Promise<void>[] = [];
 
         // read the outdir from the packagetarget
-        const buildConfig: TSConfig = require(packageTarget.packageTarget);
-        const sourceRoot = path.resolve(path.dirname(packageTarget.packageTarget));
+        const buildConfig: TSConfig = require(target.target);
+        const sourceRoot = path.resolve(path.dirname(target.target));
         const buildOutDir = path.resolve(sourceRoot, buildConfig.compilerOptions.outDir);
 
-        // get the sub directories from the output, these will match the folder structure\
+        // get the sub directories from the output, these will match the folder structure
         // in the .ts source directory
         const builtFolders = getSubDirNames(buildOutDir);
 
         for (let j = 0; j < builtFolders.length; j++) {
 
             // read the package.json from the root of the original source
-            const pkg = require(path.resolve(sourceRoot, builtFolders[j], "package.json"));
+            let pkg = require(path.resolve(sourceRoot, builtFolders[j], "package.json"));
 
             pkg.version = version;
-            pkg.main = `./dist/${builtFolders[j]}.es5.umd.js`;
-            pkg.module = `./dist/${builtFolders[j]}.es5.js`;
-            pkg.es2015 = `./dist/${builtFolders[j]}.js`;
+            pkg.main = `./index.js`;
 
             // update our peer dependencies and dependencies placeholder if needed
             for (const key in pkg.peerDependencies) {
@@ -60,8 +54,13 @@ export function writePackageFiles(version: string, config: PackageSchema) {
                 }
             }
 
+            // finally call our transform function giving the caller the ability to make any final edits
+            pkg = transform(pkg);
+
             promises.push(new Promise((resolve, reject) => {
-                fs.writeFile(path.resolve(packageTarget.outDir, builtFolders[j], "package.json"), JSON.stringify(pkg, null, 4), (err) => {
+                const folderPath = path.resolve(target.outDir, builtFolders[j]);
+                ensurePath(folderPath);
+                fs.writeFile(path.join(folderPath, "package.json"), JSON.stringify(pkg, null, 4), (err) => {
 
                     if (err) {
                         console.error(err);
@@ -72,7 +71,7 @@ export function writePackageFiles(version: string, config: PackageSchema) {
                 });
             }));
         }
-    }
 
-    return Promise.all(promises);
+        return Promise.all(promises);
+    };
 }
